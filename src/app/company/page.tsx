@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Breadcrumb from "@/components/Breadcrumb";
 import SectionHeading from "@/components/SectionHeading";
+import ScrollFadeIn from "@/components/ScrollFadeIn";
 
 export const metadata: Metadata = {
   title: "COMPANY",
@@ -64,105 +65,111 @@ export default function CompanyPage() {
 
       {/* Company Overview */}
       <section className="py-16 bg-white">
-        <div className="max-w-[800px] mx-auto px-6">
-          <SectionHeading en="Company" ja="会社概要" />
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10">
+          <ScrollFadeIn>
+            <SectionHeading en="Company" ja="会社概要" />
+          </ScrollFadeIn>
 
-          <table className="company-table">
-            <tbody>
-              {companyInfo.map((item, i) => (
-                <tr key={i}>
-                  <th>{item.label}</th>
-                  <td>
-                    <span className="whitespace-pre-line">{item.value}</span>
-                    {item.hasMap && (
-                      <a
-                        href="https://maps.google.com/?q=STATION+Ai+名古屋"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-primary text-[13px] ml-4 hover:underline"
-                      >
-                        MAP
-                        <span className="material-icons text-[16px]">
-                          keyboard_arrow_right
-                        </span>
-                      </a>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <ScrollFadeIn delay={100}>
+            <div className="max-w-[800px] mx-auto">
+              <table className="company-table">
+                <tbody>
+                  {companyInfo.map((item, i) => (
+                    <tr key={i}>
+                      <th>{item.label}</th>
+                      <td>
+                        <span className="whitespace-pre-line text-[13px] sm:text-[14px]">{item.value}</span>
+                        {item.hasMap && (
+                          <a
+                            href="https://maps.google.com/?q=STATION+Ai+名古屋"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-primary text-[13px] sm:text-[14px] ml-4 hover:underline"
+                          >
+                            MAP
+                            <span className="material-icons text-[16px]">
+                              keyboard_arrow_right
+                            </span>
+                          </a>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </ScrollFadeIn>
         </div>
       </section>
 
       {/* Member */}
       <section className="py-16 bg-white">
-        <div className="max-w-[800px] mx-auto px-6">
-          <SectionHeading en="Member" ja="役員紹介" />
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10">
+          <ScrollFadeIn>
+            <SectionHeading en="Member" ja="役員紹介" />
+          </ScrollFadeIn>
 
-          <div className="space-y-16">
+          <div className="max-w-[800px] mx-auto space-y-16">
             {members.map((member, i) => (
-              <div
-                key={i}
-                className="flex flex-col md:flex-row items-center gap-8"
-              >
-                {/* Photo */}
-                <div className="w-[200px] h-[200px] rounded-lg overflow-hidden bg-bg-gray shrink-0">
-                  {member.photo ? (
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-text-muted">
-                      <span className="material-icons text-[64px]">
-                        person
+              <ScrollFadeIn key={i} delay={i * 100}>
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  {/* Photo */}
+                  <div className="w-[200px] h-[200px] rounded-xl overflow-hidden bg-bg-gray shrink-0">
+                    {member.photo ? (
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-text-muted">
+                        <span className="material-icons text-[64px]">
+                          person
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  {/* Info */}
+                  <div>
+                    <p className="text-primary font-bold text-[13px] sm:text-[14px] font-[Lato] tracking-wider mb-1">
+                      {member.role}
+                    </p>
+                    <p className="text-[24px] sm:text-[28px] font-bold text-text-dark">
+                      {member.name}
+                      <span className="text-[13px] sm:text-[14px] font-normal text-text-light ml-3">
+                        {member.nameEn}
                       </span>
-                    </div>
-                  )}
+                    </p>
+                  </div>
                 </div>
-                {/* Info */}
-                <div>
-                  <p className="text-primary font-bold text-[14px] font-[Lato] tracking-wider mb-1">
-                    {member.role}
-                  </p>
-                  <p className="text-[28px] font-bold text-text-dark">
-                    {member.name}
-                    <span className="text-[14px] font-normal text-text-light ml-3">
-                      {member.nameEn}
-                    </span>
-                  </p>
-                </div>
-              </div>
+              </ScrollFadeIn>
             ))}
 
             {/* Mentors */}
             {mentors.map((mentor, i) => (
-              <div
-                key={i}
-                className="flex flex-col md:flex-row items-center gap-8"
-              >
-                <div className="w-[200px] h-[200px] rounded-lg overflow-hidden bg-bg-gray shrink-0">
-                  <div className="w-full h-full flex items-center justify-center text-text-muted">
-                    <span className="material-icons text-[64px]">person</span>
+              <ScrollFadeIn key={i} delay={(members.length + i) * 100}>
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="w-[200px] h-[200px] rounded-xl overflow-hidden bg-bg-gray shrink-0">
+                    <div className="w-full h-full flex items-center justify-center text-text-muted">
+                      <span className="material-icons text-[64px]">person</span>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-text-light text-[13px] sm:text-[14px] mb-1">
+                      {mentor.role}
+                    </p>
+                    <p className="text-[24px] sm:text-[28px] font-bold text-text-dark">
+                      {mentor.name}
+                      <span className="text-[13px] sm:text-[14px] font-normal text-text-light ml-3">
+                        {mentor.nameEn}
+                      </span>
+                    </p>
+                    <p className="text-[13px] sm:text-[14px] text-text-light mt-2">
+                      {mentor.description}
+                    </p>
                   </div>
                 </div>
-                <div>
-                  <p className="text-text-light text-[14px] mb-1">
-                    {mentor.role}
-                  </p>
-                  <p className="text-[28px] font-bold text-text-dark">
-                    {mentor.name}
-                    <span className="text-[14px] font-normal text-text-light ml-3">
-                      {mentor.nameEn}
-                    </span>
-                  </p>
-                  <p className="text-[13px] text-text-light mt-2">
-                    {mentor.description}
-                  </p>
-                </div>
-              </div>
+              </ScrollFadeIn>
             ))}
           </div>
         </div>

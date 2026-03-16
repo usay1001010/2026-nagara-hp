@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/Breadcrumb";
 import SectionHeading from "@/components/SectionHeading";
+import ScrollFadeIn from "@/components/ScrollFadeIn";
 
 export const metadata: Metadata = {
   title: "NEWS",
@@ -152,28 +153,31 @@ export default function NewsPage() {
       <Breadcrumb items={[{ label: "NEWS" }]} />
 
       <section className="py-16 bg-white">
-        <div className="max-w-[960px] mx-auto px-6">
-          <SectionHeading en="NEWS" ja="ニュース" />
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10">
+          <ScrollFadeIn>
+            <SectionHeading en="NEWS" ja="ニュース" />
+          </ScrollFadeIn>
 
-          <div className="space-y-0">
-            {allNews.map((news) => (
-              <Link
-                key={news.id}
-                href={`/news/${news.id}`}
-                className="flex flex-col md:flex-row md:items-start gap-3 md:gap-6 py-6 border-b border-bg-gray hover:bg-bg-light transition-colors px-4 -mx-4"
-              >
-                <div className="flex items-center gap-4 shrink-0">
-                  <span className="category-badge whitespace-nowrap">
-                    {news.category}
-                  </span>
-                </div>
-                <p className="text-[14px] text-text leading-relaxed hover:text-primary flex-1">
-                  {news.title}
-                </p>
-                <time className="text-[13px] text-text-muted font-[Lato] shrink-0">
-                  {news.date}
-                </time>
-              </Link>
+          <div className="max-w-[960px] mx-auto space-y-0">
+            {allNews.map((news, i) => (
+              <ScrollFadeIn key={news.id} delay={i * 30}>
+                <Link
+                  href={`/news/${news.id}`}
+                  className="flex flex-col md:flex-row md:items-start gap-3 md:gap-6 py-6 border-b border-bg-gray hover:bg-bg-light transition-colors px-4 -mx-4"
+                >
+                  <div className="flex items-center gap-4 shrink-0">
+                    <span className="category-badge whitespace-nowrap">
+                      {news.category}
+                    </span>
+                  </div>
+                  <p className="text-[13px] sm:text-[14px] text-text leading-relaxed hover:text-primary flex-1">
+                    {news.title}
+                  </p>
+                  <time className="text-[12px] sm:text-[13px] text-text-muted font-[Lato] shrink-0">
+                    {news.date}
+                  </time>
+                </Link>
+              </ScrollFadeIn>
             ))}
           </div>
         </div>

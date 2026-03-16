@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import ScrollFadeIn from "@/components/ScrollFadeIn";
+import TestimonialCarousel from "@/components/TestimonialCarousel";
 
 export const metadata: Metadata = {
   title:
@@ -65,154 +67,168 @@ const testimonials = [
     role: "施設長",
     name: "K様",
   },
+  {
+    quote: "未来の介護の姿が見えた。ワクワクするサービス！",
+    role: "施設長",
+    name: "K様",
+  },
 ];
 
 export default function NagarakaigoPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-[#e8f4fd] py-16 md:py-24 overflow-hidden">
-        <div className="max-w-[1280px] mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center gap-10">
-            <div className="flex-1">
-              <h1 className="text-[32px] md:text-[44px] font-bold text-text-dark leading-tight mb-6">
-                介護しながら
-                <br />
-                事務作業を終わらせる
-                <br />
-                会話記録AI
-              </h1>
-              <div className="mb-6">
+      <section className="bg-[#e8f4fd] py-12 sm:py-16 md:py-24 overflow-hidden">
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10">
+          <ScrollFadeIn>
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              <div className="flex-1 text-center md:text-left">
+                <h1 className="text-[28px] sm:text-[36px] md:text-[42px] font-bold text-[#222] leading-tight mb-6">
+                  介護しながら
+                  <br />
+                  事務作業を終わらせる
+                  <br />
+                  会話記録AI
+                </h1>
+                <div className="mb-6">
+                  <Image
+                    src="/images/nagarakaigo-logo.svg"
+                    alt="ながらかいご"
+                    width={190}
+                    height={50}
+                    className="h-[40px] sm:h-[50px] w-auto mx-auto md:mx-0"
+                  />
+                </div>
+                <p className="text-[14px] sm:text-[15px] text-[#333] leading-relaxed max-w-[480px] mx-auto md:mx-0">
+                  ながらかいごは介護作業中や会議の音声から自動で記録の作成、議事録の生成を行う介護支援アプリです。
+                </p>
+              </div>
+              <div className="flex-1 max-w-[560px]">
                 <Image
-                  src="/images/nagarakaigo-logo.svg"
-                  alt="ながらかいご"
-                  width={190}
-                  height={50}
-                  className="h-[50px] w-auto"
+                  src="/images/nagarakaigo-app.webp"
+                  alt="ながらかいごアプリ画面"
+                  width={600}
+                  height={340}
+                  className="w-full h-auto rounded-2xl shadow-lg"
                 />
               </div>
-              <p className="text-[15px] text-text leading-relaxed">
-                ながらかいごは介護作業中や会議の音声から自動で記録の作成、議事録の生成を行う介護支援アプリです。
-              </p>
             </div>
-            <div className="flex-1">
-              <Image
-                src="/images/nagarakaigo-app.webp"
-                alt="ながらかいごアプリ画面"
-                width={600}
-                height={340}
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
+          </ScrollFadeIn>
         </div>
       </section>
 
       {/* Pain Point */}
-      <section className="py-16 bg-white">
-        <div className="max-w-[640px] mx-auto px-6 text-center">
-          <div className="bg-bg-light rounded-2xl p-10">
-            <p className="text-[22px] md:text-[26px] font-bold text-text-dark leading-relaxed">
-              介護士の仕事の33%が
-              <br />
-              <span className="text-primary">
-                &ldquo;記録作業&rdquo;
-              </span>
-              で失われている
-            </p>
-          </div>
+      <section className="py-14 md:py-20 bg-white">
+        <div className="w-full max-w-[600px] mx-auto px-4 sm:px-6 text-center">
+          <ScrollFadeIn>
+            <div className="bg-[#f7f8fa] rounded-3xl p-8 sm:p-12">
+              <p className="text-[20px] sm:text-[24px] md:text-[26px] font-bold text-[#222] leading-relaxed">
+                介護士の仕事の33%が
+                <br />
+                <span className="text-primary">
+                  &ldquo;記録作業&rdquo;
+                </span>
+                で失われている
+              </p>
+            </div>
+          </ScrollFadeIn>
         </div>
       </section>
 
       {/* Features */}
-      <section className="py-16 bg-bg-light">
-        <div className="max-w-[960px] mx-auto px-6">
-          <h2 className="text-[28px] font-bold text-center mb-3">主要機能</h2>
-          <p className="text-center text-[14px] text-text-light mb-12">
-            ながらかいごは以下の４つの機能で介護士さんの悩みを解決します
-          </p>
+      <section className="py-14 md:py-20 bg-[#f7f8fa]">
+        <div className="w-full max-w-[960px] mx-auto px-4 sm:px-6">
+          <ScrollFadeIn>
+            <h2 className="text-[24px] sm:text-[28px] font-bold text-center mb-3">
+              主要機能
+            </h2>
+            <p className="text-center text-[13px] sm:text-[14px] text-[#616161] mb-10 sm:mb-14">
+              ながらかいごは以下の４つの機能で介護士さんの悩みを解決します
+            </p>
+          </ScrollFadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {features.map((feature, i) => (
-              <div
-                key={i}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="aspect-square w-full max-w-[200px] mx-auto mb-4 relative">
-                  <Image
-                    src={feature.image}
-                    alt={feature.title}
-                    fill
-                    className="object-contain"
-                  />
+              <ScrollFadeIn key={i} delay={i * 100}>
+                <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="aspect-square w-[140px] sm:w-[180px] mx-auto mb-5 relative">
+                    <Image
+                      src={feature.image}
+                      alt={feature.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <h3 className="text-[16px] sm:text-[18px] font-bold text-center mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-[12px] sm:text-[13px] text-[#616161] text-center leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <h3 className="text-[18px] font-bold text-center mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-[13px] text-text-light text-center leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+              </ScrollFadeIn>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-16 bg-white">
-        <div className="max-w-[960px] mx-auto px-6">
-          <h2 className="text-[28px] font-bold text-center mb-3">
-            利用者の声
-          </h2>
-          <div className="h-[2px] w-[40px] bg-primary mx-auto mb-12" />
+      {/* Testimonials - Carousel */}
+      <section className="py-14 md:py-20 bg-[#f7f8fa]">
+        <div className="w-full max-w-[960px] mx-auto px-4 sm:px-6">
+          <ScrollFadeIn>
+            <h2 className="text-[24px] sm:text-[28px] font-bold text-center mb-3">
+              利用者の声
+            </h2>
+            <div className="h-[2px] w-[40px] bg-primary mx-auto mb-10 sm:mb-14" />
+          </ScrollFadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <div
-                key={i}
-                className="bg-bg-light rounded-xl p-6 text-center"
-              >
-                <p className="text-[14px] text-text leading-relaxed mb-4">
-                  「{t.quote}」
-                </p>
-                <p className="text-[12px] text-text-muted">
-                  - {t.role} {t.name}
-                </p>
-              </div>
-            ))}
-          </div>
+          <ScrollFadeIn delay={150}>
+            <TestimonialCarousel testimonials={testimonials} />
+          </ScrollFadeIn>
         </div>
       </section>
 
       {/* Results */}
-      <section className="py-16 bg-bg-light">
-        <div className="max-w-[960px] mx-auto px-6">
-          <h2 className="text-[28px] font-bold text-center mb-12">導入効果</h2>
+      <section className="py-14 md:py-20 bg-white">
+        <div className="w-full max-w-[960px] mx-auto px-4 sm:px-6">
+          <ScrollFadeIn>
+            <h2 className="text-[24px] sm:text-[28px] font-bold text-center mb-10 sm:mb-14">
+              導入効果
+            </h2>
+          </ScrollFadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="material-icons text-primary text-[28px]">
-                  assignment_turned_in
-                </span>
-                <h3 className="text-[20px] font-bold">業務時間の大幅削減</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ScrollFadeIn delay={0}>
+              <div className="bg-[#f7f8fa] rounded-2xl p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="material-icons text-primary text-[26px]">
+                    assignment_turned_in
+                  </span>
+                  <h3 className="text-[18px] sm:text-[20px] font-bold">
+                    業務時間の大幅削減
+                  </h3>
+                </div>
+                <p className="text-[13px] sm:text-[14px] text-[#333] leading-relaxed">
+                  実証実験運用中の施設様からの見込みで、年間10,000時間以上の削減効果が期待される。紙とPCに追われていた記録業務を
+                  &ldquo;話すだけ&rdquo; に置き換え。
+                </p>
               </div>
-              <p className="text-[14px] text-text leading-relaxed">
-                実証実験運用中の施設様からの見込みで、年間10,000時間以上の削減効果が期待される。紙とPCに追われていた記録業務を
-                &ldquo;話すだけ&rdquo; に置き換え。
-              </p>
-            </div>
-            <div className="bg-white rounded-xl p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="material-icons text-red-400 text-[28px]">
-                  favorite
-                </span>
-                <h3 className="text-[20px] font-bold">ケアの質向上</h3>
+            </ScrollFadeIn>
+            <ScrollFadeIn delay={150}>
+              <div className="bg-[#f7f8fa] rounded-2xl p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="material-icons text-red-400 text-[26px]">
+                    favorite
+                  </span>
+                  <h3 className="text-[18px] sm:text-[20px] font-bold">
+                    ケアの質向上
+                  </h3>
+                </div>
+                <p className="text-[13px] sm:text-[14px] text-[#333] leading-relaxed">
+                  普段取ることのない内容も&ldquo;話すだけで&rdquo;詳細に記録を作成。文章作成が苦手な介護士さんでもAIの力で高レベルな記録の作成をサポート。
+                </p>
               </div>
-              <p className="text-[14px] text-text leading-relaxed">
-                普段取ることのない内容も&ldquo;話すだけで&rdquo;詳細に記録を作成。文章作成が苦手な介護士さんでもAIの力で高レベルな記録の作成をサポート。
-              </p>
-            </div>
+            </ScrollFadeIn>
           </div>
         </div>
       </section>

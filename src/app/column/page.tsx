@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumb";
+import ScrollFadeIn from "@/components/ScrollFadeIn";
 
 export const metadata: Metadata = {
   title: "介護記録をAI音声入力で効率化するアプリなら株式会社NAGARA | コラム一覧",
@@ -90,90 +91,105 @@ export default function ColumnPage() {
       <Breadcrumb items={[{ label: "COLUMN" }]} />
 
       <section className="py-16 bg-white">
-        <div className="max-w-[800px] mx-auto px-6">
-          <h1 className="text-[24px] font-bold text-text-dark mb-2">
-            コラム一覧
-          </h1>
-          <p className="text-[13px] text-text-light mb-4">
-            役立つ機能が搭載された介護記録アプリ「ながらかいご」について詳しく解説
-          </p>
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10">
+          <div className="max-w-[800px] mx-auto">
+            <ScrollFadeIn>
+              <h1 className="text-[20px] sm:text-[24px] font-bold text-text-dark mb-2">
+                コラム一覧
+              </h1>
+              <p className="text-[13px] sm:text-[14px] text-text-light mb-4">
+                役立つ機能が搭載された介護記録アプリ「ながらかいご」について詳しく解説
+              </p>
+            </ScrollFadeIn>
 
-          {/* Header image */}
-          <div className="mb-10 rounded-lg overflow-hidden">
-            <Image
-              src="/images/column-header.webp"
-              alt="介護記録アプリについてのお役立ちコラム"
-              width={800}
-              height={450}
-              className="w-full h-auto"
-            />
-          </div>
+            {/* Header image */}
+            <ScrollFadeIn delay={100}>
+              <div className="mb-10 rounded-xl overflow-hidden">
+                <Image
+                  src="/images/column-header.webp"
+                  alt="介護記録アプリについてのお役立ちコラム"
+                  width={800}
+                  height={450}
+                  className="w-full h-auto"
+                />
+              </div>
+            </ScrollFadeIn>
 
-          <h2 className="text-[18px] font-bold text-text-dark mb-8">
-            介護記録アプリについてのお役立ちコラム
-          </h2>
+            <ScrollFadeIn delay={150}>
+              <h2 className="text-[16px] sm:text-[18px] font-bold text-text-dark mb-8">
+                介護記録アプリについてのお役立ちコラム
+              </h2>
+            </ScrollFadeIn>
 
-          {/* Column list */}
-          <div className="space-y-0">
-            {columns.map((column) => (
-              <Link
-                key={column.id}
-                href={`/column/${column.id}`}
-                className="flex items-start gap-4 py-5 border-b border-bg-gray hover:bg-bg-light transition-colors px-4 -mx-4"
-              >
-                <span className="text-primary font-bold font-[Lato] text-[16px] shrink-0 w-8">
-                  {column.num}
-                </span>
-                <p className="text-[14px] text-text leading-relaxed hover:text-primary">
-                  {column.title}
-                </p>
-              </Link>
-            ))}
+            {/* Column list */}
+            <div className="space-y-0">
+              {columns.map((column, i) => (
+                <ScrollFadeIn key={column.id} delay={200 + i * 40}>
+                  <Link
+                    href={`/column/${column.id}`}
+                    className="flex items-start gap-4 py-5 border-b border-bg-gray hover:bg-bg-light transition-colors px-4 -mx-4"
+                  >
+                    <span className="text-primary font-bold font-[Lato] text-[15px] sm:text-[16px] shrink-0 w-8">
+                      {column.num}
+                    </span>
+                    <p className="text-[13px] sm:text-[14px] text-text leading-relaxed hover:text-primary">
+                      {column.title}
+                    </p>
+                  </Link>
+                </ScrollFadeIn>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Bottom company info */}
       <section className="py-16 bg-white border-t border-bg-gray">
-        <div className="max-w-[800px] mx-auto px-6">
-          <h2 className="text-[20px] font-bold text-primary text-center mb-8">
-            リアルタイムで介護記録が可能なソフトを導入するなら株式会社NAGARA
-          </h2>
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-10">
+          <div className="max-w-[800px] mx-auto">
+            <ScrollFadeIn>
+              <h2 className="text-[18px] sm:text-[20px] font-bold text-primary text-center mb-8">
+                リアルタイムで介護記録が可能なソフトを導入するなら株式会社NAGARA
+              </h2>
+            </ScrollFadeIn>
 
-          <table className="company-table">
-            <tbody>
-              {companyInfo.map((item, i) => (
-                <tr key={i}>
-                  <th>{item.label}</th>
-                  <td>
-                    {item.label === "URL" ? (
-                      <a
-                        href={item.value}
-                        className="text-primary hover:underline"
-                      >
-                        {item.value}
-                      </a>
-                    ) : (
-                      <span className="whitespace-pre-line">{item.value}</span>
-                    )}
-                    {item.hasMap && (
-                      <a
-                        href="https://maps.google.com/?q=STATION+Ai+名古屋"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-primary text-[13px] ml-4 hover:underline"
-                      >
-                        MAP
-                        <span className="material-icons text-[16px]">
-                          keyboard_arrow_right
-                        </span>
-                      </a>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+            <ScrollFadeIn delay={100}>
+              <table className="company-table">
+                <tbody>
+                  {companyInfo.map((item, i) => (
+                    <tr key={i}>
+                      <th>{item.label}</th>
+                      <td>
+                        {item.label === "URL" ? (
+                          <a
+                            href={item.value}
+                            className="text-primary hover:underline text-[13px] sm:text-[14px]"
+                          >
+                            {item.value}
+                          </a>
+                        ) : (
+                          <span className="whitespace-pre-line text-[13px] sm:text-[14px]">{item.value}</span>
+                        )}
+                        {item.hasMap && (
+                          <a
+                            href="https://maps.google.com/?q=STATION+Ai+名古屋"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-primary text-[13px] sm:text-[14px] ml-4 hover:underline"
+                          >
+                            MAP
+                            <span className="material-icons text-[16px]">
+                              keyboard_arrow_right
+                            </span>
+                          </a>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </ScrollFadeIn>
+          </div>
         </div>
       </section>
     </>
