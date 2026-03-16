@@ -18,11 +18,12 @@ const lato = Lato({
 
 export const metadata: Metadata = {
   title: {
-    default: "株式会社NAGARA（NAGARA, inc.）| 介護記録アプリ「ながらかいご」",
+    default:
+      "介護記録アプリなら「ながらかいご」｜AI搭載による音声入力で事務作業をゼロに",
     template: "%s | 株式会社NAGARA（NAGARA, inc.）",
   },
   description:
-    "介護記録アプリなら「ながらかいご」。AI搭載による音声入力で事務作業をゼロに。介護現場での音声入力による自動記録で業務時間を大幅に削減しケアの質を向上させます。",
+    "介護記録アプリなら、AI音声入力の「ながらかいご」。介護中の声をAIが自動で記録・要約し、議事録や報告書作成の事務負担をゼロへ。",
   metadataBase: new URL("https://nagarainc.co.jp"),
   openGraph: {
     type: "website",
@@ -38,9 +39,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`${notoSansJP.variable} ${lato.variable} antialiased`}>
         <Header />
-        <main className="pt-20">{children}</main>
+        {children}
         <Footer />
       </body>
     </html>
